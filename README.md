@@ -1,11 +1,14 @@
-# My Personal Project
+# Basic Cipher
 
-## A subtitle
+## Send, Encrypt and Decrypt Messages
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+This program allows users to convert a message to an encrypted code. The user
+can also take an encrypted code and decrypt the code to form the 
+message. It requires upper or lowercase letters within a string.
+Any user who wants to send an encrypted message or decrypt can utilize this program.
 
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly but they will appear correctly on GitHub.
+This project is of interest to me because it serves as an elementary look
+into encryption and securing information. **Security** and **Networking** are two
+side interests of mine that both incorporate many forms of encryption and 
+protecting packets of information. This program can *extend functionality* by incorporating 
+increasingly complex cryptographic algorithms. 
