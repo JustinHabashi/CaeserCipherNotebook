@@ -1,11 +1,13 @@
-# Basic Cipher
+# Encrypted Notebook
 
 ## Send, Encrypt and Decrypt Messages
 
-This program allows users to convert a message to an encrypted code. The user
+This program allows users to convert a message to an encrypted code and 
+add it to a notebook as an entry. The user
 can also take an encrypted code and decrypt the code to form the 
 message. It requires upper or lowercase letters within a string.
-Any user who wants to send an encrypted message or decrypt can utilize this program.
+Any user who wants to store encrypted strings into a notebook
+and then decrypt them can utilize this program.
 
 This project is of interest to me because it serves as an elementary look
 into encryption and securing information. **Security** and **Networking** are two
