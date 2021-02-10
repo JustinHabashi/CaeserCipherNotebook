@@ -14,3 +14,11 @@ into encryption and securing information. **Security** and **Networking** are tw
 side interests of mine that both incorporate many forms of encryption and 
 protecting packets of information. This program can *extend functionality* by incorporating 
 increasingly complex cryptographic algorithms. 
+
+**As a User**
+I want to:
+<ol>
+    <li> add a notebook entry with an encryption code</li>
+    <li> retrieve an encrypted message</li>
+    <li> decrypt the message</li>
+    <li> view how many entries are in the notebook</li>
