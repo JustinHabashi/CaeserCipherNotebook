@@ -22,3 +22,4 @@ I want to:
     <li> retrieve an encrypted message</li>
     <li> decrypt the message</li>
     <li> view how many entries are in the notebook</li>
+</ol>
