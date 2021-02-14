@@ -7,16 +7,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class NotebookAppTest {
     private Notebook testNotebook;
+    private NotebookEntry testNotebookEntry;
 
     @BeforeEach
     void runBefore() {
         testNotebook = new Notebook(10);
+        testNotebookEntry = new NotebookEntry("test", 0);
     }
 
     @Test
     void testConstructor() {
         assertEquals(10, testNotebook.getMaxSize());
         assertEquals(0, testNotebook.getSize());
+        assertEquals("test", testNotebookEntry.getEntry());
+        assertEquals(0,testNotebookEntry.getCipher());
     }
 
     @Test

@@ -7,11 +7,12 @@ public class Notebook {
     private int maxSize;
     private LinkedList<NotebookEntry> notebookEntries;
 
+    //EFFECTS: Notebook constructor
     public Notebook(int maxSize) {
         this.notebookEntries = new LinkedList<NotebookEntry>();
         this.maxSize = maxSize;
     }
-                      // the current size of the notebook
+
 
     // MODIFIES: this
     // EFFECTS: This method is called by NotebookApp to print out all entries without linking
