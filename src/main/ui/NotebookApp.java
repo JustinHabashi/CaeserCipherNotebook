@@ -59,7 +59,9 @@ public class NotebookApp {
         if (notebook.getSize() == 0) {
             System.out.println("\nThis notebook is empty\n");
         } else {
-            notebook.printAllEntries();
+            for (int j = 0; j < notebook.getSize(); j++) {
+                System.out.println(notebook.printAllEntries(j));
+            }
         }
     }
 

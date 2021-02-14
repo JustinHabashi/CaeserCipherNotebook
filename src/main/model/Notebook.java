@@ -4,6 +4,10 @@ import java.util.LinkedList;
 
 public class Notebook {
 
+    // DISCLAIMER: This notebook layout used inspiration from the provided Teller app and
+    //             a Github project found from lukaszsi titled JAVA-Notebook for the adding
+    //             and viewing of entries
+
     private int maxSize;
     private LinkedList<NotebookEntry> notebookEntries;
 
@@ -15,12 +19,9 @@ public class Notebook {
 
 
     // MODIFIES: this
-    // EFFECTS: This method is called by NotebookApp to print out all entries without linking
-    //          NotebookApp to NotebookEntry limiting dependencies
-    public void printAllEntries() {
-        for (int j = 0; j < getSize(); j++) {
-            System.out.println(notebookEntries.get(j).getEntry() + "\n");
-        }
+    // EFFECTS: This method is called by NotebookApp to print out all entries
+    public String printAllEntries(int index) {
+        return notebookEntries.get(index).getEntry();
     }
 
         // EFFECTS: Getters for maxSize, size of notebook
