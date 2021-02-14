@@ -51,9 +51,11 @@ class NotebookAppTest {
         assertEquals(0, testNotebook.getSize());
     }
 
-    //@Test
-    //void testPrintAllEntries() {
-    //    testNotebook.addEntry(new NotebookEntry("It works!", 3));
-    //    assertEquals(0, testNotebook.printAllEntries());
-    //}
+    @Test
+    void testPrintAllEntries() {
+        testNotebook.addEntry(new NotebookEntry("It works!", 3));
+        assertEquals(testNotebook.printAllEntries(0),"It works!");
+        testNotebook.addEntry(new NotebookEntry("Please work", 3));
+        assertEquals(testNotebook.printAllEntries(1),"Please work");
+    }
 }
