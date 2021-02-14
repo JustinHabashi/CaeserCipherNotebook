@@ -26,6 +26,7 @@ public class Notebook {
     public int getMaxSize() {
         return maxSize;
     }
+
     public int getSize() {
         return notebookEntries.size();
     }
@@ -33,7 +34,11 @@ public class Notebook {
     // MODIFIES: this
     // EFFECTS: adds an entry to the back of the list
     public void addEntry(NotebookEntry newEntryString) {
-        this.notebookEntries.add(newEntryString);
+        if (notebookEntries.size() < maxSize) {
+            this.notebookEntries.add(newEntryString);
+        } else {
+            return;
+        }
     }
 
     // MODIFIES: this

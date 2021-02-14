@@ -25,6 +25,25 @@ class NotebookAppTest {
         assertEquals(1, testNotebook.getSize());
         testNotebook.addEntry(new NotebookEntry("It works again!", 3));
         assertEquals(2, testNotebook.getSize());
+    }
 
+    @Test
+    void testMaxSize() {
+        for (int i = 1; i <= testNotebook.getMaxSize(); i++) {
+            testNotebook.addEntry(new NotebookEntry("It works!", 3));
+        }
+        assertEquals(10, testNotebook.getSize());
+        testNotebook.addEntry(new NotebookEntry("It works!", 3));
+        assertEquals(10, testNotebook.getSize());
+    }
+
+    @Test
+    void testClearEntries() {
+        for (int i = 1; i <= testNotebook.getMaxSize(); i++) {
+            testNotebook.addEntry(new NotebookEntry("It works!", 3));
+        }
+        assertEquals(10, testNotebook.getSize());
+        testNotebook.clearEntries();
+        assertEquals(0, testNotebook.getSize());
     }
 }
