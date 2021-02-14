@@ -13,23 +13,32 @@ public class Notebook {
     }
                       // the current size of the notebook
 
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: This method is called by NotebookApp to print out all entries without linking
+    //          NotebookApp to NotebookEntry limiting dependencies
     public void printAllEntries() {
         for (int j = 0; j < getSize(); j++) {
             System.out.println(notebookEntries.get(j).getEntry() + "\n");
         }
     }
 
+        // EFFECTS: Getters for maxSize, size of notebook
+    public int getMaxSize() {
+        return maxSize;
+    }
     public int getSize() {
         return notebookEntries.size();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds an entry to the back of the list
     public void addEntry(NotebookEntry newEntryString) {
         this.notebookEntries.add(newEntryString);
     }
 
+    // MODIFIES: this
+    // EFFECTS: clears out the content of notebookEntries without stopping the program
     public void clearEntries() {
         this.notebookEntries.clear();
     }
-
 }

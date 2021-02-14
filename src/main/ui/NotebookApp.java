@@ -5,7 +5,6 @@ import model.NotebookEntry;
 import java.util.Scanner;
 
 public class NotebookApp {
-    private NotebookEntry entry;
     private Scanner input;
     private Notebook notebook;
     private static final String menu = "Main Menu.\n"
@@ -55,6 +54,7 @@ public class NotebookApp {
         }
     }
 
+    // EFFECTS: prints out a list of all of the current notebook entries, or empty message if empty
     public void showEntries() {
         if (notebook.getSize() == 0) {
             System.out.println("\nThis notebook is empty\n");
@@ -63,12 +63,18 @@ public class NotebookApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds an entry to notebook after previous entries
     public void addEntry() {
-        System.out.println("\nWrite note: ");
-        String newEntryString = input.nextLine();
-        NotebookEntry newNote = new NotebookEntry(newEntryString, 3);
-        notebook.addEntry(newNote);
-        System.out.println("\nAdded");
+        if (notebook.getSize() >= notebook.getMaxSize()) {
+            System.out.println("\nThis notebook is full\n");
+        } else {
+            System.out.println("\nWrite note: ");
+            String newEntryString = input.nextLine();
+            NotebookEntry newNote = new NotebookEntry(newEntryString, 3);
+            notebook.addEntry(newNote);
+            System.out.println("\nAdded");
+        }
     }
 
 
