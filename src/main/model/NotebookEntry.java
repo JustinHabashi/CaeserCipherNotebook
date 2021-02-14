@@ -2,16 +2,14 @@ package model;
 
 public class NotebookEntry {
 
-    private int entryId;
-    private String entry;
     private int cipher;
+    private String entry;
 
 
     // EFFECTS: NotebookEntry constructor
     public NotebookEntry(String entry, int cipher) {
         this.entry = entry;
-        entryId++;
-        this.cipher = cipher;
+        this.cipher = 0;
     }
 
     // EFFECTS: getters
@@ -19,12 +17,9 @@ public class NotebookEntry {
         return entry;
     }
 
-    public int getEntryId() {
-        return entryId;
-    }
-
     public int getCipher() {
         return cipher;
     }
+
 
 }

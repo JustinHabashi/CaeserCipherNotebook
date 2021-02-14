@@ -1,25 +1,24 @@
-# Encrypted Notebook
+# Simple Notebook
 
-## Send, Encrypt and Decrypt Messages
+## Create and track notes in a simple console interface
 
-This program allows users to convert a message to an encrypted code and 
-add it to a notebook as an entry. The user
-can also take an encrypted code and decrypt the code to form the 
-message. It requires upper or lowercase letters within a string.
-Any user who wants to store encrypted strings into a notebook
-and then decrypt them can utilize this program.
+This program allows users to create a notebook comprised of individual inputs.
+The usage could be for a meal tracker, daily journal, or notepad. The functionality
+will hopefully be extended in order to encrypt the notepad entries, but for the time being
+it works as an interface to track notes. Inside of NotebookEntry it has been given a cipher value
+which will later contribute to encrypting the individual entries.
 
 This project is of interest to me because it serves as an elementary look
-into encryption and securing information. **Security** and **Networking** are two
+into storing and securing information. **Security** and **Networking** are two
 side interests of mine that both incorporate many forms of encryption and 
-protecting packets of information. This program can *extend functionality* by incorporating 
-increasingly complex cryptographic algorithms. 
+protecting packets of information. This information is stored using as few dependencies as possible.
+The NotebookApp communicates only with the Notebook, which communicates with the individual NotebookEntry class. 
 
 **As a User**
 I want to:
 <ol>
-    <li> add a notebook entry with an encryption code</li>
-    <li> retrieve an encrypted message</li>
-    <li> decrypt the message</li>
+    <li> add a notebook entry</li>
+    <li> retrieve all entries</li>
+    <li> clear the notebook</li>
     <li> view how many entries are in the notebook</li>
 </ol>

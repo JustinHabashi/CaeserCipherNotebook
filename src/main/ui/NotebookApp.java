@@ -6,21 +6,19 @@ import java.util.Scanner;
 
 public class NotebookApp {
     private NotebookEntry entry;
-    private int entrySignPost;
     private Scanner input;
     private Notebook notebook;
     private static final String menu = "Main Menu.\n"
             + "1. Show Entries\n"
             + "2. Add Entry\n"
-            + "3. Remove Entry\n"
-            + "4. Clear all Entries\n"
+            + "3. Clear Entries\n"
+            + "4. Show Notebook Size\n"
             + "5. Exit";
 
     // EFFECTS: keeps the NotebookApp running
     public NotebookApp() {
         notebook = new Notebook(10);
         input = new Scanner(System.in);
-        entrySignPost = 1;
         runNotebook();
     }
 
@@ -51,9 +49,9 @@ public class NotebookApp {
         } else if (command.equals("2")) {
             addEntry();
         } else if (command.equals("3")) {
-            removeEntry();
+            clearAllEntries();
         } else if (command.equals("4")) {
-            clearEntries();
+            showSize();
         }
     }
 
@@ -67,27 +65,27 @@ public class NotebookApp {
 
     public void addEntry() {
         System.out.println("\nWrite note: ");
-        String newEntryString = entrySignPost++ + ". " + input.nextLine();
+        String newEntryString = input.nextLine();
         NotebookEntry newNote = new NotebookEntry(newEntryString, 3);
         notebook.addEntry(newNote);
         System.out.println("\nAdded");
     }
 
-    // REQUIRES: an integer as an input
+
     // MODIFIES: this
-    // EFFECTS: removes the specified notebookentry based on the id
-    public void removeEntry() {
-        System.out.println("\nWhich note would you like to remove: ");
-        int response = input.nextInt();
-        input.nextLine();
-        if (response < 1 || response > notebook.getSize()) {
-            System.out.println("\nNo entry with that number\n");
+    // EFFECTS: removes all inputs in the notebook
+    public void clearAllEntries() {
+        System.out.println("\nAre you sure you want to clear all notes? y/n\n");
+        String command = input.nextLine();
+        if (command.equals("y")) {
+            System.out.println("It's never too late to start over");
+            notebook.clearEntries();
         } else {
-            notebook.removeEntry(response);
+            return;
         }
     }
 
-    public void clearEntries() {
-        // stub
+    public void showSize() {
+        System.out.println(notebook.getSize());
     }
 }

@@ -28,8 +28,8 @@ public class Notebook {
         this.notebookEntries.add(newEntryString);
     }
 
-    public void removeEntry(int index) {
-        this.notebookEntries.remove(index);
+    public void clearEntries() {
+        this.notebookEntries.clear();
     }
 
 }
