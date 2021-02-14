@@ -4,18 +4,32 @@ import java.util.LinkedList;
 
 public class Notebook {
 
-    private LinkedList<NotebookEntry> Notebook;
-    private Notebook() {
-        Notebook = new LinkedList<NotebookEntry>();
+    private int maxSize;
+    private LinkedList<NotebookEntry> notebookEntries;
+
+    public Notebook(int maxSize) {
+        this.notebookEntries = new LinkedList<NotebookEntry>();
+        this.maxSize = maxSize;
     }
-    public int size = Notebook.size();                  // the current size of the notebook
+                      // the current size of the notebook
 
-    public String getAllEntries() {
-        for (int j = 1; j <= size; j++) {
-            System.out.println(Notebook.get(j));
+    // EFFECTS:
+    public void printAllEntries() {
+        for (int j = 0; j < getSize(); j++) {
+            System.out.println(notebookEntries.get(j).getEntry() + "\n");
         }
+    }
 
+    public int getSize() {
+        return notebookEntries.size();
+    }
 
+    public void addEntry(NotebookEntry newEntryString) {
+        this.notebookEntries.add(newEntryString);
+    }
+
+    public void removeEntry(int index) {
+        this.notebookEntries.remove(index);
     }
 
 }
