@@ -12,7 +12,7 @@ public class NotebookEntry {
         this.cipher = 0;
     }
 
-    // EFFECTS: getters
+    // EFFECTS: getters for entry and cipher
     public String getEntry() {
         return entry;
     }
