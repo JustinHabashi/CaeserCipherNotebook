@@ -24,11 +24,12 @@ public class Notebook {
         return notebookEntries.get(index).getEntry();
     }
 
-        // EFFECTS: Getters for maxSize, size of notebook
+    // EFFECTS: Getters for maxSize, size of notebook
     public int getMaxSize() {
         return maxSize;
     }
 
+    // EFFECTS: gets the size of the notebook
     public int getSize() {
         return notebookEntries.size();
     }

@@ -54,6 +54,7 @@ public class NotebookApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: prints out a list of all of the current notebook entries, or empty message if empty
     public void showEntries() {
         if (notebook.getSize() == 0) {
@@ -93,6 +94,8 @@ public class NotebookApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: outputs the size of the notebook
     public void showSize() {
         System.out.println(notebook.getSize());
     }
