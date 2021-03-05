@@ -21,4 +21,6 @@ I want to:
     <li> retrieve all entries</li>
     <li> clear the notebook</li>
     <li> view how many entries are in the notebook</li>
+    <li> save my notebook contents</li>
+    <li> retrieve my previously saved notebooks from file</li>
 </ol>
