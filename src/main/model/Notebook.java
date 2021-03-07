@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+// This Notebook model contains the functionality for a collection of Notebook Entries. It contains a
+// max size for the notebook and necessary functionality.
 public class Notebook {
 
     // DISCLAIMER: This notebook layout used inspiration from the provided Teller app and

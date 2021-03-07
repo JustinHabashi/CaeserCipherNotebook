@@ -2,6 +2,8 @@ package model;
 
 import org.json.JSONObject;
 
+// This class is the building block of a Notebook, complete with a cipher value for a Caesar cipher to be
+// created later, and the string entry which is taken directly from the user.
 public class NotebookEntry {
 
     private int cipher;
