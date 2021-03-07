@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.LinkedList;
 
 public class Notebook {
@@ -48,5 +51,22 @@ public class Notebook {
     // EFFECTS: clears out the content of notebookEntries without stopping the program
     public void clearEntries() {
         this.notebookEntries.clear();
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("maxSize", maxSize);
+        json.put("notebookEntries", entriesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns notebookEntries in this notebook as JSON array
+    private JSONArray entriesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (NotebookEntry ne : notebookEntries) {
+            jsonArray.put(ne.toJson());
+        }
+        return jsonArray;
     }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 public class NotebookEntry {
 
     private int cipher;
@@ -21,5 +23,10 @@ public class NotebookEntry {
         return cipher;
     }
 
-
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("entry", entry);
+        json.put("cipher", cipher);
+        return json;
+    }
 }

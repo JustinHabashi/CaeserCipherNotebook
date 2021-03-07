@@ -2,22 +2,34 @@ package ui;
 
 import model.Notebook;
 import model.NotebookEntry;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class NotebookApp {
+    private static final String JSON_STORE = "./data/workroom.json";
     private Scanner input;
     private Notebook notebook;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
     private static final String menu = "Main Menu.\n"
             + "1. Show Entries\n"
             + "2. Add Entry\n"
             + "3. Clear Entries\n"
             + "4. Show Notebook Size\n"
-            + "5. Exit";
+            + "5. Exit\n"
+            + "6. Save Notebook\n"
+            + "7. Load Notebook\n";
 
     // EFFECTS: keeps the NotebookApp running
     public NotebookApp() {
         notebook = new Notebook(10);
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runNotebook();
     }
 
@@ -51,6 +63,10 @@ public class NotebookApp {
             clearAllEntries();
         } else if (command.equals("4")) {
             showSize();
+        } else if (command.equals("6")) {
+            saveNotebook();
+        } else if (command.equals("7")) {
+            loadNotebook();
         }
     }
 
@@ -98,5 +114,28 @@ public class NotebookApp {
     // EFFECTS: outputs the size of the notebook
     public void showSize() {
         System.out.println(notebook.getSize());
+    }
+
+    // EFFECTS: saves the current notebook to a JSON file
+    public void saveNotebook() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(notebook);
+            jsonWriter.close();
+            System.out.println("Your notebook has been saved to" + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: Unable to save");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads the current notebook from a JSON file
+    public void loadNotebook() {
+        try {
+            notebook = jsonReader.read();
+            System.out.println("Loaded previous notebook from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to obtain previous notebook from " + JSON_STORE);
+        }
     }
 }
