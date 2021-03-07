@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class NotebookApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/notebook.json";
     private Scanner input;
     private Notebook notebook;
     private JsonWriter jsonWriter;
@@ -77,8 +77,9 @@ public class NotebookApp {
             System.out.println("\nThis notebook is empty\n");
         } else {
             for (int j = 0; j < notebook.getSize(); j++) {
-                System.out.println("\n" + notebook.printAllEntries(j) + "\n");
+                System.out.println(notebook.printAllEntries(j) + "\n");
             }
+            System.out.println("You have " + (notebook.getMaxSize() - notebook.getSize()) + " entries left\n");
         }
     }
 

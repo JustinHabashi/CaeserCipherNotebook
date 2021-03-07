@@ -3,13 +3,17 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Notebook {
 
     // DISCLAIMER: This notebook layout used inspiration from the provided Teller app and
     //             a Github project found from lukaszsi titled JAVA-Notebook for the adding
     //             and viewing of entries
+    // FURTHER DISCLAIMER: for the saving and loading functionality, JsonSerializationDemo
+    //                     was heavily used to establish framework.
 
     private int maxSize;
     private LinkedList<NotebookEntry> notebookEntries;
@@ -20,6 +24,10 @@ public class Notebook {
         this.maxSize = maxSize;
     }
 
+    // EFFECTS: returns a list of notebook entries in this notebook
+    public List<NotebookEntry> getNotebookEntries() {
+        return Collections.unmodifiableList(notebookEntries);
+    }
 
     // MODIFIES: this
     // EFFECTS: This method is called by NotebookApp to print out all entries
