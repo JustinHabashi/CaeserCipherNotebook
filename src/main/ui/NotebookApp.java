@@ -91,7 +91,7 @@ public class NotebookApp {
         } else {
             System.out.println("\nWrite note: ");
             String newEntryString = input.nextLine();
-            NotebookEntry newNote = new NotebookEntry(newEntryString, 3);
+            NotebookEntry newNote = new NotebookEntry(newEntryString);
             notebook.addEntry(newNote);
             System.out.println("\nAdded");
         }

@@ -61,7 +61,7 @@ public class JsonReader {
     private void addEntry(Notebook nb, JSONObject jsonObject) {
         int cipher = jsonObject.getInt("cipher");
         String entry = jsonObject.getString("entry");
-        NotebookEntry notebookEntry = new NotebookEntry(entry, cipher);
+        NotebookEntry notebookEntry = new NotebookEntry(entry);
         nb.addEntry(notebookEntry);
     }
 }

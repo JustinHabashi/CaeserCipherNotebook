@@ -12,7 +12,7 @@ class NotebookAppTest {
     @BeforeEach
     void runBefore() {
         testNotebook = new Notebook(10);
-        testNotebookEntry = new NotebookEntry("test", 0);
+        testNotebookEntry = new NotebookEntry("test");
     }
 
     @Test
@@ -25,26 +25,26 @@ class NotebookAppTest {
 
     @Test
     void testAddEntry() {
-        testNotebook.addEntry(new NotebookEntry("It works!", 3));
+        testNotebook.addEntry(new NotebookEntry("It works!"));
         assertEquals(1, testNotebook.getSize());
-        testNotebook.addEntry(new NotebookEntry("It works again!", 3));
+        testNotebook.addEntry(new NotebookEntry("It works again!"));
         assertEquals(2, testNotebook.getSize());
     }
 
     @Test
     void testMaxSize() {
         for (int i = 1; i <= testNotebook.getMaxSize(); i++) {
-            testNotebook.addEntry(new NotebookEntry("It works!", 3));
+            testNotebook.addEntry(new NotebookEntry("It works!"));
         }
         assertEquals(10, testNotebook.getSize());
-        testNotebook.addEntry(new NotebookEntry("It works!", 3));
+        testNotebook.addEntry(new NotebookEntry("It works!"));
         assertEquals(10, testNotebook.getSize());
     }
 
     @Test
     void testClearEntries() {
         for (int i = 1; i <= testNotebook.getMaxSize(); i++) {
-            testNotebook.addEntry(new NotebookEntry("It works!", 3));
+            testNotebook.addEntry(new NotebookEntry("It works!"));
         }
         assertEquals(10, testNotebook.getSize());
         testNotebook.clearEntries();
@@ -53,9 +53,9 @@ class NotebookAppTest {
 
     @Test
     void testPrintAllEntries() {
-        testNotebook.addEntry(new NotebookEntry("It works!", 3));
+        testNotebook.addEntry(new NotebookEntry("It works!"));
         assertEquals(testNotebook.printAllEntries(0),"It works!");
-        testNotebook.addEntry(new NotebookEntry("Please work", 3));
+        testNotebook.addEntry(new NotebookEntry("Please work"));
         assertEquals(testNotebook.printAllEntries(1),"Please work");
     }
 }

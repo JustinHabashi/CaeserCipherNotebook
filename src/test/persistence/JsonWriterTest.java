@@ -46,8 +46,8 @@ public class JsonWriterTest extends JsonTest {
     void testRandomNb() {
         try {
             Notebook nb = new Notebook(10);
-            nb.addEntry(new NotebookEntry("this could be anything", 0));
-            nb.addEntry(new NotebookEntry("it doesn't matter what this one is", 0));
+            nb.addEntry(new NotebookEntry("this could be anything"));
+            nb.addEntry(new NotebookEntry("it doesn't matter what this one is"));
             JsonWriter write = new JsonWriter("./data/testRandomNb.json");
             write.open();
             write.write(nb);
