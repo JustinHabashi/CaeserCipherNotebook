@@ -8,6 +8,7 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import javax.swing.*;
 
 public class NotebookApp {
     private static final String JSON_STORE = "./data/notebook.json";

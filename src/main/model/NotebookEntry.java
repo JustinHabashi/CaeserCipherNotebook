@@ -1,5 +1,6 @@
 package model;
 
+import model.CipherText;
 import org.json.JSONObject;
 
 import java.util.Random;
@@ -13,13 +14,16 @@ public class NotebookEntry {
     private Random ciphergen = new Random();
     private int cipher;
     private String entry;
+    private String cipherEntry;
+    private CipherText getCipherTextInt;
+    CipherText cipherTextInt = new CipherText(entry, cipher);
 
 
     // EFFECTS: NotebookEntry constructor
     public NotebookEntry(String entry) {
         this.entry = entry;
-        this.cipher = ciphergen.nextInt(MAX + MIN) + MIN;
-
+        this.cipher = ciphergen.nextInt(MAX - MIN) + MIN;
+        this.cipherEntry = cipherTextInt.convertCharListToCipher(entry, cipher);
     }
 
     // EFFECTS: getters for entry and cipher
@@ -29,6 +33,10 @@ public class NotebookEntry {
 
     public int getCipher() {
         return cipher;
+    }
+
+    public String getCipherEntry() {
+        return cipherEntry;
     }
 
     public JSONObject toJson() {
