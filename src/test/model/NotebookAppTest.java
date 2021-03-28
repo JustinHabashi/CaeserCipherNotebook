@@ -78,7 +78,8 @@ class NotebookAppTest {
         testNotebook.addEntry(new NotebookEntry("!"));
         assertEquals(testNotebook.addCipherEntry(0), testNotebook.getNotebookEntries().get(0).getCipherEntry());
         testNotebook.addEntry(new NotebookEntry("$Pecial"));
-        String index = testNotebook.addCipherEntry(1);
         assertEquals(testNotebook.addCipherEntry(1), testNotebook.getNotebookEntries().get(1).getCipherEntry());
+        testNotebook.addEntry(new NotebookEntry("NO THIS CAN'T BE RIGHT!@#%@#$@"));
+        assertEquals(testNotebook.addCipherEntry(2), testNotebook.getNotebookEntries().get(2).getCipherEntry());
     }
 }
