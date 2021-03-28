@@ -8,19 +8,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class NotebookAppTest {
     private Notebook testNotebook;
     private NotebookEntry testNotebookEntry;
+    private CipherText testCipherText;
 
     @BeforeEach
     void runBefore() {
         testNotebook = new Notebook(10);
-        testNotebookEntry = new NotebookEntry("test");
+        testNotebookEntry = new NotebookEntry("Test");
+        testCipherText = new CipherText("This is my TEXTYEAH!#%^", 3);
     }
 
     @Test
     void testConstructor() {
         assertEquals(10, testNotebook.getMaxSize());
         assertEquals(0, testNotebook.getSize());
-        assertEquals("test", testNotebookEntry.getEntry());
-        assertEquals(0,testNotebookEntry.getCipher());
+        assertEquals("Test", testNotebookEntry.getEntry());
     }
 
     @Test
@@ -81,5 +82,12 @@ class NotebookAppTest {
         assertEquals(testNotebook.addCipherEntry(1), testNotebook.getNotebookEntries().get(1).getCipherEntry());
         testNotebook.addEntry(new NotebookEntry("NO THIS CAN'T BE RIGHT!@#%@#$@"));
         assertEquals(testNotebook.addCipherEntry(2), testNotebook.getNotebookEntries().get(2).getCipherEntry());
+    }
+
+    @Test
+    void testConvertStringToCharList() {
+        assertEquals(testCipherText.convertCharListToCipher(testCipherText.nbEntry, testCipherText.cipherValue),
+                "Wklv lv pb WHAWBHDK!#%^");
+
     }
 }
