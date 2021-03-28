@@ -82,12 +82,12 @@ class NotebookAppTest {
         assertEquals(testNotebook.addCipherEntry(1), testNotebook.getNotebookEntries().get(1).getCipherEntry());
         testNotebook.addEntry(new NotebookEntry("NO THIS CAN'T BE RIGHT!@#%@#$@"));
         assertEquals(testNotebook.addCipherEntry(2), testNotebook.getNotebookEntries().get(2).getCipherEntry());
+        testNotebook.addEntry(testNotebookEntry);
     }
 
     @Test
     void testConvertStringToCharList() {
         assertEquals(testCipherText.convertCharListToCipher(testCipherText.nbEntry, testCipherText.cipherValue),
                 "Wklv lv pb WHAWBHDK!#%^");
-
     }
 }

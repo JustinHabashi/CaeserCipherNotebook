@@ -57,7 +57,7 @@ public class CipherText {
                     cipherChar.add(toLowerCase(alphabet.get((t + cipherValue) % 26)));
                     chars.remove(0);
                     t = -1;
-                } else if (chars.get(0) == alphabet.get(t)) {
+                } else {
                     cipherChar.add(alphabet.get((t + cipherValue) % 26));
                     chars.remove(0);
                     t = -1;
