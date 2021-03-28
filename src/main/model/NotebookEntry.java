@@ -1,6 +1,5 @@
 package model;
 
-import model.CipherText;
 import org.json.JSONObject;
 
 import java.util.Random;
@@ -9,8 +8,8 @@ import java.util.Random;
 // created later, and the string entry which is taken directly from the user.
 public class NotebookEntry {
 
-    private final int MIN = 1;
-    private final int MAX = 10;
+    private final int min = 1;
+    private final int max = 10;
     private Random ciphergen = new Random();
     private int cipher;
     private String entry;
@@ -22,7 +21,7 @@ public class NotebookEntry {
     // EFFECTS: NotebookEntry constructor
     public NotebookEntry(String entry) {
         this.entry = entry;
-        this.cipher = ciphergen.nextInt(MAX - MIN) + MIN;
+        this.cipher = ciphergen.nextInt(max - min) + min;
         this.cipherEntry = cipherTextInt.convertCharListToCipher(entry, cipher);
     }
 
