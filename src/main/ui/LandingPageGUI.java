@@ -10,6 +10,8 @@ public class LandingPageGUI extends JPanel {
     NotebookGUI main = new NotebookGUI();
     JFrame frame = new JFrame("Landing Page");
 
+    // MODIFIES: this
+    // EFFECTS: creates a landing page to greet the user
     public void createLandingPage() {
 
         JTextField progress = new JTextField();
@@ -38,9 +40,11 @@ public class LandingPageGUI extends JPanel {
 
     }
 
+    // EFFECTS: creates a landing page, meant to close this frame but an error is occuring
     public void goMain() {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         main.createGUI();
+        frame.dispose();
     }
 
 }

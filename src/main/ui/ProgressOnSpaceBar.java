@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 // is done with the landing page
 public class ProgressOnSpaceBar extends KeyAdapter {
 
+    // EFFECTS: opens the main page when landing page detects " "
     @Override
     public void keyPressed(KeyEvent event) {
         LandingPageGUI landing = new LandingPageGUI();
@@ -17,6 +18,7 @@ public class ProgressOnSpaceBar extends KeyAdapter {
         }
         if (event.getKeyCode() == KeyEvent.VK_HOME) {
             landing.goMain();
+            landing.setVisible(false);
         }
     }
 }

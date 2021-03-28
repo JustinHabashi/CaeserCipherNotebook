@@ -11,15 +11,18 @@ import static java.lang.Character.toLowerCase;
 public class CipherText {
     String nbEntry;
     Integer cipherValue;
-    ArrayList<Character> alphabet = new ArrayList<Character>(
+    ArrayList<Character> alphabet = new ArrayList<>(
             Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
                     'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'));
 
+    // CONSTRUCTOR
     public CipherText(String nbEntry, int cipherValue) {
         this.nbEntry = nbEntry;
         this.cipherValue = cipherValue;
     }
 
+    // MODIFIES: this
+    // EFFECTS: Converts the nbEntry string to a list of characters
     public ArrayList<Character> convertStringToCharList(String nbEntry) {
         ArrayList<Character> chars = new ArrayList<>();
 
@@ -29,6 +32,8 @@ public class CipherText {
         return chars;
     }
 
+    // MODIFIES: this
+    // EFFECTS: converts the list of characters to a string
     private String convertArrayListToString(ArrayList<Character> list) {
         StringBuilder cipherString = new StringBuilder(list.size());
         for (Character cha : list) {
@@ -37,6 +42,9 @@ public class CipherText {
         return cipherString.toString();
     }
 
+    // MODIFIES: this
+    // EFFECTS: This is the main cipher program. It takes the cipher value and applies it to the list of chars
+    // by cycling through the alphabet component
     public String convertCharListToCipher(String nbEntry, int cipherValue) {
         // List of characters converted from nbEntry
         ArrayList<Character> chars = convertStringToCharList(nbEntry);

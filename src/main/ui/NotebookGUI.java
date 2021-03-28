@@ -30,73 +30,56 @@ public class NotebookGUI extends JPanel implements ActionListener {
     JList list;
     JList clist;
     Notebook guiNotebook = new Notebook(24);
+    JPanel bottomBracket = new JPanel();
+    JPanel topLeftBracket = new JPanel();
+    JPanel topRightBracket = new JPanel();
 
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/notebook.json";
 
+    // MODIFIES: this
+    // EFFECTS: sets the common attributes for all buttons
+    public JButton setButtonAttributes(JButton jbut) {
+        jbut.setBounds(20, 705, 70, 60);
+        jbut.setForeground(Color.green);
+        jbut.setBackground(Color.black);
+        jbut.addActionListener(this);
+        return jbut;
+    }
 
-    //Beginning of the GUI
-
-    //Creates and sets up the window frame.
-    public void createGUI() {
-        // GUI NOTEBOOK
-
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
-
+    // MODIFIES: this
+    // EFFECTS: Creates all the buttons
+    private void makeButtons() {
         addButton = new JButton();
-        addButton.setBounds(20, 705, 70, 60);
         addButton.setText("Add");
-        addButton.setForeground(Color.green);
-        addButton.setBackground(Color.black);
-        addButton.addActionListener(this);
+        setButtonAttributes(addButton);
 
         showCipherButton = new JButton();
-        showCipherButton.setBounds(20, 705, 70, 60);
         showCipherButton.setText("Show Cipher");
-        showCipherButton.setForeground(Color.green);
-        showCipherButton.setBackground(Color.black);
-        showCipherButton.addActionListener(this);
+        setButtonAttributes(showCipherButton);
 
         removeButton = new JButton();
-        removeButton.setBounds(20, 705, 70, 60);
         removeButton.setText("Remove");
-        removeButton.setForeground(Color.green);
-        removeButton.setBackground(Color.black);
-        removeButton.addActionListener(this);
+        setButtonAttributes(removeButton);
 
         saveButton = new JButton();
-        saveButton.setBounds(20, 705, 70, 60);
         saveButton.setText("Save");
-        saveButton.setForeground(Color.green);
-        saveButton.setBackground(Color.black);
-        saveButton.addActionListener(this);
+        setButtonAttributes(saveButton);
 
         loadButton = new JButton();
-        loadButton.setBounds(20, 705, 70, 60);
         loadButton.setText("Load");
-        loadButton.setForeground(Color.green);
-        loadButton.setBackground(Color.black);
-        loadButton.addActionListener(this);
+        setButtonAttributes(loadButton);
 
         showEntriesButton = new JButton();
         showEntriesButton.setText("Show Entries");
-        showEntriesButton.setForeground(Color.green);
-        showEntriesButton.setBackground(Color.black);
-        showEntriesButton.addActionListener(this);
+        setButtonAttributes(showEntriesButton);
+    }
 
-        textField = new JTextField(20);
-        textField.setVisible(true);
-        textField.setFont(new Font("Segoe", Font.PLAIN,20));
-        textField.setForeground(Color.GREEN);
-        textField.setBackground(Color.BLACK);
-        textField.setCaretColor(Color.WHITE);
-        textField.setPreferredSize(new Dimension(180, 30));
-        textField.setHorizontalAlignment(JTextField.LEFT);
-
+    // MODIFIES: this
+    // EFFECTS: Creates the two lists lists
+    private void makeLists() {
         entryList = new DefaultListModel();
-        //entryList.setBounds(10, 10, 400, 600);
 
         cipherList = new DefaultListModel();
 
@@ -119,9 +102,24 @@ public class NotebookGUI extends JPanel implements ActionListener {
         clist.setForeground(Color.GREEN);
         clist.setFont(new Font("Arial",Font.BOLD,20));
 
+    }
 
-        // BOTTOM BRACKET PANEL
-        JPanel bottomBracket = new JPanel();
+    // MODIFIES: this
+    // EFFECTS: creates the user text field
+    private void makeTextField() {
+        textField = new JTextField(20);
+        textField.setVisible(true);
+        textField.setFont(new Font("Segoe", Font.PLAIN,20));
+        textField.setForeground(Color.GREEN);
+        textField.setBackground(Color.BLACK);
+        textField.setCaretColor(Color.WHITE);
+        textField.setPreferredSize(new Dimension(180, 30));
+        textField.setHorizontalAlignment(JTextField.LEFT);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: makes the three brackets
+    private void makeBrackets() {
         bottomBracket.setBackground(Color.white);
         bottomBracket.setBounds(0, 700, 600, 100);
         bottomBracket.add(textField);
@@ -133,15 +131,25 @@ public class NotebookGUI extends JPanel implements ActionListener {
         bottomBracket.add(showEntriesButton);
 
         // MAIN TOP LEFT BRACKET
-        JPanel topLeftBracket = new JPanel();
         topLeftBracket.setBackground(Color.gray);
         topLeftBracket.setBounds(0, 0, 300, 700);
         topLeftBracket.add(list);
         // MAIN TOP RIGHT BRACKET
-        JPanel topRightBracket = new JPanel();
         topRightBracket.setBackground(Color.black);
         topRightBracket.setBounds(300,0,300,700);
         topRightBracket.add(clist);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Creates the GUI frame and adds all the former elements
+    public void createGUI() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+        makeButtons();
+        makeLists();
+        makeTextField();
+        makeBrackets();
+        // BOTTOM BRACKET PANEL
 
         JFrame frame = new JFrame("NotebookApp");
         frame.setSize(600, 800);
@@ -155,70 +163,101 @@ public class NotebookGUI extends JPanel implements ActionListener {
         frame.add(bottomBracket);
         frame.add(topLeftBracket);
         frame.add(topRightBracket);
-
     }
 
+    // MODIFIES: entryList and possibly clist if it is visible to the user
+    // EFFECTS: sets the functionality for adding an element to both lists
+    private void addItButton() {
+        if (entryList.getSize() == guiNotebook.getMaxSize()) {
+            textField.setText("You have reached max list size");
+            Toolkit.getDefaultToolkit().beep();
+        } else {
+            entryList.addElement(textField.getText());
+            guiNotebook.addEntry(new NotebookEntry(textField.getText()));
+            if (clist.isVisible()) {
+                cipherList.addElement(guiNotebook.addCipherEntry(guiNotebook.getSize() - 1));
+            }
+        }
+    }
+
+    // MODIFIES: entryList and cipherlist
+    // EFFECTS: removes a selection from entrylist and cipherlist based on user selection
+    private void removeItButton() {
+        if (guiNotebook.getSize() == 0) {
+            textField.setText("Make a Notebook Entry first");
+        } else {
+            int index = list.getSelectedIndex();
+            entryList.remove(index);
+            guiNotebook.removeEntry(index);
+            cipherList.remove(index);
+        }
+    }
+
+    // MODIFIES: json file
+    // EFFECTS: saves the program
+    private void saveItButton() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(guiNotebook);
+            jsonWriter.close();
+            System.out.println("Your notebook has been saved to" + JSON_STORE);
+        } catch (FileNotFoundException n) {
+            System.out.println("Error: Unable to save");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads the program
+    private void loadItButton() {
+        try {
+            guiNotebook = jsonReader.read();
+            System.out.println("Loaded previous notebook from " + JSON_STORE);
+            entryList.clear();
+            for (int i = 0; i < guiNotebook.getSize(); i++) {
+                entryList.addElement(guiNotebook.printAllEntries(i));
+            }
+        } catch (IOException b) {
+            System.out.println("Unable to obtain previous notebook from " + JSON_STORE);
+        }
+    }
+
+    // EFFECTS: shows the cipher list
+    private void showItCipherButton() {
+        if (clist.isVisible()) {
+            clist.setVisible(false);
+        } else {
+            cipherList.clear();
+            for (int i = 0; i < guiNotebook.getSize(); i++) {
+                cipherList.addElement(guiNotebook.addCipherEntry(i));
+            }
+            clist.setVisible(true);
+        }
+    }
+
+    // EFFECTS: shows the cipher list
+    private void showItEntriesButton() {
+        if (list.isVisible()) {
+            list.setVisible(false);
+        } else {
+            list.setVisible(true);
+        }
+    }
+
+    // EFFECTS: overrides the action performed and scans for user click input
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
-            if (entryList.getSize() == guiNotebook.getMaxSize()) {
-                textField.setText("You have reached max list size");
-                Toolkit.getDefaultToolkit().beep();
-            } else {
-                entryList.addElement(textField.getText().trim());
-                guiNotebook.addEntry(new NotebookEntry(textField.getText()));
-                if (clist.isVisible()) {
-                    cipherList.addElement(guiNotebook.addCipherEntry(guiNotebook.getSize() - 1));
-                }
-            }
-
+            addItButton();
         } else if (e.getSource() == removeButton) {
-            if (guiNotebook.getSize() == 0) {
-                textField.setText("Make a Notebook Entry first");
-            } else {
-                int index = list.getSelectedIndex();
-                entryList.remove(index);
-                guiNotebook.removeEntry(index);
-                cipherList.remove(index);
-            }
-
+            removeItButton();
         } else if (e.getSource() == saveButton) {
-            try {
-                jsonWriter.open();
-                jsonWriter.write(guiNotebook);
-                jsonWriter.close();
-                System.out.println("Your notebook has been saved to" + JSON_STORE);
-            } catch (FileNotFoundException n) {
-                System.out.println("Error: Unable to save");
-            }
+            saveItButton();
         } else if (e.getSource() == loadButton) {
-            try {
-                guiNotebook = jsonReader.read();
-                System.out.println("Loaded previous notebook from " + JSON_STORE);
-                entryList.clear();
-                for (int i = 0; i < guiNotebook.getSize(); i++) {
-                    entryList.addElement(guiNotebook.printAllEntries(i));
-                }
-
-            } catch (IOException b) {
-                System.out.println("Unable to obtain previous notebook from " + JSON_STORE);
-            }
+            loadItButton();
         } else if (e.getSource() == showCipherButton) {
-            if (clist.isVisible()) {
-                clist.setVisible(false);
-            } else {
-                cipherList.clear();
-                for (int i = 0; i < guiNotebook.getSize(); i++) {
-                    cipherList.addElement(guiNotebook.addCipherEntry(i));
-                }
-                clist.setVisible(true);
-            }
+            showItCipherButton();
         } else if (e.getSource() == showEntriesButton) {
-            if (list.isVisible()) {
-                list.setVisible(false);
-            } else {
-                list.setVisible(true);
-            }
+            showItEntriesButton();
         }
     }
 }
