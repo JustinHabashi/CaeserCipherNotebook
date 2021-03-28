@@ -4,13 +4,14 @@ import model.Notebook;
 import model.NotebookEntry;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 
 // this class controls the majority of all GUI functionality on the main page
@@ -18,7 +19,6 @@ import java.io.IOException;
 // ActionListener is extended and fleshed out in the bottom portion
 public class NotebookGUI extends JPanel implements ActionListener {
 
-    LandingPageGUI landingPageGUI;
     JButton addButton;
     JButton removeButton;
     JButton saveButton;
@@ -38,6 +38,7 @@ public class NotebookGUI extends JPanel implements ActionListener {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/notebook.json";
+
 
     // MODIFIES: this
     // EFFECTS: sets the common attributes for all buttons
@@ -141,11 +142,24 @@ public class NotebookGUI extends JPanel implements ActionListener {
         topRightBracket.add(clist);
     }
 
+    public static void playMusic(String file) {
+        InputStream music;
+        try {
+            music = new FileInputStream(new File(file));
+            AudioStream audios = new AudioStream(music);
+            AudioPlayer.player.start(audios);
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+
     // MODIFIES: this
     // EFFECTS: Creates the GUI frame and adds all the former elements
     public void createGUI() {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+
+        playMusic("src/main/ui/sound/01. Twin Peaks Theme (Instrumental).wav");
         makeButtons();
         makeLists();
         makeTextField();

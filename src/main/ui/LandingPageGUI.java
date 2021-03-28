@@ -3,7 +3,6 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import javax.swing.JTextField;
 
 // Landing page that the user first arrives at. Has a generic code photo
 public class LandingPageGUI extends JFrame {
@@ -39,6 +38,7 @@ public class LandingPageGUI extends JFrame {
         frame.add(mainLabel);
 
     }
+
 
     // EFFECTS: creates a landing page, meant to close this frame but an error is occuring
     public void goMain() {
