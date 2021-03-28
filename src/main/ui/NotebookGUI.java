@@ -12,6 +12,10 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
+// this class controls the majority of all GUI functionality on the main page
+// all components of the Jframe are contained within
+// ActionListener is extended and fleshed out in the bottom portion
 public class NotebookGUI extends JPanel implements ActionListener {
 
     JButton addButton;
@@ -159,6 +163,7 @@ public class NotebookGUI extends JPanel implements ActionListener {
         if (e.getSource() == addButton) {
             if (entryList.getSize() == guiNotebook.getMaxSize()) {
                 textField.setText("You have reached max list size");
+                Toolkit.getDefaultToolkit().beep();
             } else {
                 entryList.addElement(textField.getText().trim());
                 guiNotebook.addEntry(new NotebookEntry(textField.getText()));

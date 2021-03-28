@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.*;
 
+// This was the initial console functionality of the program. Still useful for debug
 public class NotebookApp {
     private static final String JSON_STORE = "./data/notebook.json";
     private Scanner input;

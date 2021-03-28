@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import javax.swing.JTextField;
 
-
+// Landing page that the user first arrives at. Has a generic code photo
 public class LandingPageGUI extends JPanel {
     NotebookGUI main = new NotebookGUI();
     JFrame frame = new JFrame("Landing Page");

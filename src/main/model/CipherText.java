@@ -6,6 +6,8 @@ import java.util.Arrays;
 import static java.lang.Character.isLowerCase;
 import static java.lang.Character.toLowerCase;
 
+// CipherText class that converts an entry and cipher value into a ciphered code
+// most functionality is extended through the notebook class which allows the printing
 public class CipherText {
     String nbEntry;
     Integer cipherValue;
