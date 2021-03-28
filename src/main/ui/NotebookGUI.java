@@ -18,6 +18,7 @@ import java.io.IOException;
 // ActionListener is extended and fleshed out in the bottom portion
 public class NotebookGUI extends JPanel implements ActionListener {
 
+    LandingPageGUI landingPageGUI;
     JButton addButton;
     JButton removeButton;
     JButton saveButton;
