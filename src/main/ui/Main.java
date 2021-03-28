@@ -1,11 +1,10 @@
 package ui;
 
-import static ui.LandingPageGUI.createLandingPage;
-import static ui.NotebookGUI.createGUI;
+import ui.LandingPageGUI.*;
 
 public class Main {
     public static void main(String[] args) {
-        new NotebookApp();
-        //createLandingPage();
+        //new NotebookApp();
+        new LandingPageGUI().createLandingPage();
     }
 }

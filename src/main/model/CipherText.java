@@ -46,16 +46,16 @@ public class CipherText {
                 if (isLowerCase(chars.get(0))) {
                     cipherChar.add(toLowerCase(alphabet.get((t + cipherValue) % 26)));
                     chars.remove(0);
-                    t = 0;
+                    t = -1;
                 } else if (chars.get(0) == alphabet.get(t)) {
                     cipherChar.add(alphabet.get((t + cipherValue) % 26));
                     chars.remove(0);
-                    t = 0;
+                    t = -1;
                 }
             } else if (t == 25) {
                 cipherChar.add(chars.get(0));
                 chars.remove(0);
-                t = 0;
+                t = -1;
             }
         }
         return convertArrayListToString(cipherChar);

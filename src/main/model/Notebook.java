@@ -57,6 +57,14 @@ public class Notebook {
         }
     }
 
+    public void removeEntry(int index) {
+        this.notebookEntries.remove(index);
+    }
+
+    public String addCipherEntry(int index) {
+        return notebookEntries.get(index).getCipherEntry();
+    }
+
     // MODIFIES: this
     // EFFECTS: clears out the content of notebookEntries without stopping the program
     public void clearEntries() {
