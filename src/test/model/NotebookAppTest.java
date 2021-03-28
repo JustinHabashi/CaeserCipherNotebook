@@ -58,4 +58,27 @@ class NotebookAppTest {
         testNotebook.addEntry(new NotebookEntry("Please work"));
         assertEquals(testNotebook.printAllEntries(1),"Please work");
     }
+
+    @Test
+    void testRemoveEntry() {
+        testNotebook.addEntry(new NotebookEntry("It works!"));
+        assertEquals(testNotebook.printAllEntries(0),"It works!");
+        testNotebook.removeEntry(0);
+        assertEquals(testNotebook.getSize(), 0);
+        testNotebook.addEntry(new NotebookEntry("It works!"));
+        testNotebook.addEntry(new NotebookEntry("Delete This One!"));
+        testNotebook.addEntry(new NotebookEntry("this one too"));
+        testNotebook.removeEntry(1);
+        assertEquals(testNotebook.printAllEntries(0),"It works!");
+        assertEquals(testNotebook.printAllEntries(1),"this one too");
+    }
+
+    @Test
+    void testAddCipherEntry() {
+        testNotebook.addEntry(new NotebookEntry("!"));
+        assertEquals(testNotebook.addCipherEntry(0), testNotebook.getNotebookEntries().get(0).getCipherEntry());
+        testNotebook.addEntry(new NotebookEntry("$Pecial"));
+        String index = testNotebook.addCipherEntry(1);
+        assertEquals(testNotebook.addCipherEntry(1), testNotebook.getNotebookEntries().get(1).getCipherEntry());
+    }
 }
