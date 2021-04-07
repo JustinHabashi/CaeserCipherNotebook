@@ -24,3 +24,8 @@ I want to:
     <li> save my notebook contents</li>
     <li> retrieve my previously saved notebooks from file</li>
 </ol>
+
+**Phase 4: Task 2**
+A bidirectional relationship has been implemented between NotebookEntry and CipherText.
+The two classes both require the other to be active and present for its functionality
+within the GUI, so a bidirectional relationship seemed appropriate.  
