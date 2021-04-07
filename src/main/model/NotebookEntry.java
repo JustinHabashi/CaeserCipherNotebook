@@ -14,8 +14,8 @@ public class NotebookEntry {
     private int cipher;
     private String entry;
     private String cipherEntry;
-    private CipherText getCipherTextInt;
     CipherText cipherTextInt = new CipherText(entry, cipher);
+    private CipherText cipherText;
 
 
     // EFFECTS: NotebookEntry constructor
@@ -23,6 +23,17 @@ public class NotebookEntry {
         this.entry = entry;
         this.cipher = ciphergen.nextInt(max - min) + min;
         this.cipherEntry = cipherTextInt.convertCharListToCipher(entry, cipher);
+    }
+
+    public CipherText getCipherText() {
+        return cipherText;
+    }
+
+    public void setCipherText(CipherText cipherText) {
+        if (getCipherText() != cipherText) {
+            this.cipherText = cipherText;
+            cipherText.setNbEntryImport(this);
+        }
     }
 
     // EFFECTS: getters for entry and cipher

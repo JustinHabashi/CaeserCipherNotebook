@@ -16,9 +16,5 @@ public class ProgressOnSpaceBar extends KeyAdapter {
         if (ch == ' ') {
             landing.goMain();
         }
-        if (event.getKeyCode() == KeyEvent.VK_HOME) {
-            landing.goMain();
-            landing.setVisible(false);
-        }
     }
 }

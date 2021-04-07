@@ -9,6 +9,7 @@ import static java.lang.Character.toLowerCase;
 // CipherText class that converts an entry and cipher value into a ciphered code
 // most functionality is extended through the notebook class which allows the printing
 public class CipherText {
+    private NotebookEntry nbEntryImport;
     String nbEntry;
     Integer cipherValue;
     ArrayList<Character> alphabet = new ArrayList<>(
@@ -19,6 +20,21 @@ public class CipherText {
     public CipherText(String nbEntry, int cipherValue) {
         this.nbEntry = nbEntry;
         this.cipherValue = cipherValue;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the notebookEntry associated with this cipher
+    public NotebookEntry getNotebookEntry() {
+        return nbEntryImport;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the bidrectional relationship with the notebookEntry
+    public void setNbEntryImport(NotebookEntry nbEntryImport) {
+        if (getNotebookEntry() != nbEntryImport) {
+            this.nbEntryImport = nbEntryImport;
+            nbEntryImport.setCipherText(this);
+        }
     }
 
     // MODIFIES: this
@@ -55,13 +71,11 @@ public class CipherText {
             if (chars.get(0) == alphabet.get(t) || chars.get(0) == toLowerCase(alphabet.get(t))) {
                 if (isLowerCase(chars.get(0))) {
                     cipherChar.add(toLowerCase(alphabet.get((t + cipherValue) % 26)));
-                    chars.remove(0);
-                    t = -1;
                 } else {
                     cipherChar.add(alphabet.get((t + cipherValue) % 26));
-                    chars.remove(0);
-                    t = -1;
                 }
+                chars.remove(0);
+                t = -1;
             } else if (t == 25) {
                 cipherChar.add(chars.get(0));
                 chars.remove(0);

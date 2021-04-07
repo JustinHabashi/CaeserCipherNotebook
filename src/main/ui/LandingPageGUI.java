@@ -36,11 +36,10 @@ public class LandingPageGUI extends JFrame {
         frame.getContentPane().setBackground(Color.black); // BACKGROUND COLOUR
         frame.add(progress);
         frame.add(mainLabel);
-
     }
 
 
-    // EFFECTS: creates a landing page, meant to close this frame but an error is occuring
+    // EFFECTS: creates a landing page
     public void goMain() {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         main.createGUI();
