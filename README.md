@@ -28,4 +28,9 @@ I want to:
 **Phase 4: Task 2**
 A bidirectional relationship has been implemented between NotebookEntry and CipherText.
 The two classes both require the other to be active and present for its functionality
-within the GUI, so a bidirectional relationship seemed appropriate.  
+within the GUI, so a bidirectional relationship seemed appropriate. 
+
+If I had more time to work on the project, I would reorganize. The class structure
+is far too flat for comfort. Many of the classes have functionality that could better
+be divided among classes. In order to allow for functionality extensions I would make 
+the UI and model packages more modular.  
