@@ -9,12 +9,14 @@ class NotebookAppTest {
     private Notebook testNotebook;
     private NotebookEntry testNotebookEntry;
     private CipherText testCipherText;
+    private NotebookEntry testNotebookEntry2;
 
     @BeforeEach
     void runBefore() {
         testNotebook = new Notebook(10);
         testNotebookEntry = new NotebookEntry("Test");
         testCipherText = new CipherText("This is my TEXTYEAH!#%^", 3);
+        testNotebookEntry2 = new NotebookEntry("Another One");
     }
 
     @Test
@@ -89,5 +91,27 @@ class NotebookAppTest {
     void testConvertStringToCharList() {
         assertEquals(testCipherText.convertCharListToCipher(testCipherText.nbEntry, testCipherText.cipherValue),
                 "Wklv lv pb WHAWBHDK!#%^");
+    }
+
+    @Test
+    void testGetNotebookEntry() {
+        assertEquals(testCipherText.getNotebookEntry(), null);
+        testCipherText.setNbEntryImport(testNotebookEntry);
+        assertEquals(testCipherText.getNotebookEntry(), testNotebookEntry);
+        testCipherText.setNbEntryImport(testNotebookEntry);
+        assertEquals(testCipherText.getNotebookEntry(), testNotebookEntry);
+        testCipherText.setNbEntryImport(testNotebookEntry2);
+        assertEquals(testCipherText.getNotebookEntry(), testNotebookEntry2);
+    }
+
+    @Test
+    void testGetCipherText() {
+        assertEquals(testNotebookEntry.getCipherText(), null);
+        testNotebookEntry.setCipherText(testCipherText);
+        assertEquals(testNotebookEntry.getCipherText(), testCipherText);
+        testNotebookEntry.setCipherText(testCipherText);
+        assertEquals(testNotebookEntry.getCipherText(), testCipherText);
+        testNotebookEntry.setCipherText(testCipherText);
+        assertEquals(testNotebookEntry.getCipherText(), testCipherText);
     }
 }
